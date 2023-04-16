@@ -7,11 +7,18 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017
       database: microservices
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
+
+# Fetching configuration form config server service.
+  config:
+    import: configserver:http://localhost:8181
+  #    spring.config.import.optional.configserver= http://localhost:8181
+
+# We don't require erureka client registry configuration because we are using getting this common configuration from config-server microservice to repeated configuration for all microservices.
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
