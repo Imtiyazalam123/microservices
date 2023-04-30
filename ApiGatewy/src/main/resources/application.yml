@@ -11,11 +11,11 @@ spring:
           predicates:
             - Path=/users/**
 
-        - id: RATING-SERVICE
-          uri: http://localhost:9595
-          predicates:
-            - Path=/ratings/**
-
+#        - id: RATING-SERVICE
+#          uri: http://localhost:9595
+#          predicates:
+#            - Path=/ratings/**
+#
         - id: HOTEL-SERVICE
           uri: lb://HOTEL-SERVICE
           predicates:
