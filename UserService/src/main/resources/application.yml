@@ -18,6 +18,23 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-47824396.okta.com/oauth2/default
+      client:
+        registration:
+          my-internal-client:
+            provider: okta
+            authorizationGrantType: client_credentials
+            scope: internal
+            clientId: 0oa9bkyuvkbEfqb3n5d7
+            clientSecret: ZWf0UZgvpgLy_uNcYDKMq_I2EJIDOpfbj46h1Zhc
+        provider:
+          okta:
+            issuerUri:  https://dev-47824396.okta.com/oauth2/default
 #We are using spring active profiles as default
 #  profiles:
 #    active: dev
@@ -79,4 +96,9 @@ resilience4j:
 #        limitRefreshPeriod: 4s
 #        limitForPeriod: 2
 #        timeoutDuration: 2s
+
+okta:
+  oauth2:
+    issuer: https://dev-47824396.okta.com/oauth2/default
+    audience: api://default
 

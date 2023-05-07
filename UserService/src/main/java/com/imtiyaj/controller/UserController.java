@@ -3,8 +3,6 @@ package com.imtiyaj.controller;
 import com.imtiyaj.entity.User;
 import com.imtiyaj.service.UserService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
-import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +39,7 @@ public class UserController {
 
    // fall back method for the above circuit breaker
     public ResponseEntity<User> externalRatingServiceFallback(Integer userId, Exception ex) {
+        ex.printStackTrace();
         System.out.println("Rating or hotel service is down : " + ex.getMessage() + ex.getClass().getName());
         User user = User.builder()
                 .name("Unknown")
